@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 //connect to mongodb
-mongoose.connect("mongodb+srv://admin-kunal:Test123@cluster0.futjt.mongodb.net/todolistDB", {useNewUrlParser: true}); //to avoid deprecation warning
+mongoose.connect(process.env.DATABASE, {useNewUrlParser: true}); //to avoid deprecation warning
 
 //create items schema
 const itemsSchema = {
